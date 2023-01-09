@@ -69,6 +69,7 @@ fun LoginScreen(
 
     val isLoading by viewModel.isLoading.observeAsState()
     val user by viewModel.user.observeAsState()
+    val error by viewModel.error.observeAsState()
 
     if (isLoading == true) {
         LoadingDialog()
@@ -76,6 +77,12 @@ fun LoginScreen(
     if (user != null) {
         LaunchedEffect(user) {
             Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()
+        }
+    }
+    if(error != null){
+        LaunchedEffect(error) {
+            Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            viewModel.error.value = null
         }
     }
 

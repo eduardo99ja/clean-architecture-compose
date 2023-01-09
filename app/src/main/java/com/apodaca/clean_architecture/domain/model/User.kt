@@ -1,5 +1,6 @@
 package com.apodaca.clean_architecture.domain.model
 
+import com.apodaca.clean_architecture.data.database.entities.UserEntity
 import com.apodaca.clean_architecture.data.model.UserModel
 import com.google.gson.annotations.SerializedName
 
@@ -14,5 +15,10 @@ fun UserModel.toDomain(): User = User(
     name = name,
     lastName = lastName,
     email = email,
+    apiToken = apiToken,
+)
+
+fun UserEntity.toDomain(): User = User(
+    name = name,
     apiToken = apiToken,
 )

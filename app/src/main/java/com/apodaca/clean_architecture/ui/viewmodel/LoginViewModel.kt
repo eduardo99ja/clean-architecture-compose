@@ -37,6 +37,7 @@ class LoginViewModel @Inject constructor(
 
     val isLoading = MutableLiveData<Boolean>()
     val user = MutableLiveData<User>()
+    val error = MutableLiveData<String>()
 
 
     fun setEmail(email: String) {
@@ -58,7 +59,7 @@ class LoginViewModel @Inject constructor(
                     user.postValue(result.data)
                 }
                 is LogInUserUseCase.Result.Failure -> {
-
+                    error.postValue(result.message)
                     isLoading.postValue(false)
                 }
             }
